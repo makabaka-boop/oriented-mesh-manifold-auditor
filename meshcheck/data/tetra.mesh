@@ -1,0 +1,9 @@
+# tetrahedron: V=4 E=6 F=4 euler=2 genus=0
+v 0
+v 1
+v 2
+v 3
+f 0 2 1
+f 0 1 3
+f 0 3 2
+f 1 2 3

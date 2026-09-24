@@ -1,0 +1,9 @@
+[package]
+name = "meshcheck"
+version = "0.1.0"
+edition = "2021"
+description = "Combinatorial topology auditor for oriented triangle meshes"
+license = "MIT"
+
+[profile.release]
+opt-level = 2

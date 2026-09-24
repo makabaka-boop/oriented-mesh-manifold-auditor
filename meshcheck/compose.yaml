@@ -1,0 +1,20 @@
+# meshcheck 拓扑审计器容器。
+#
+# 审计默认示例：        docker compose run --rm meshcheck
+# 审计指定文件：        docker compose run --rm meshcheck data/torus.mesh
+# 审计本地模型：        cp your.mesh data/ && docker compose run --rm meshcheck data/your.mesh
+# 从标准输入读取：      cat your.mesh | docker compose run --rm -T meshcheck -
+# 运行测试：            docker compose --profile test run --rm meshcheck-test
+services:
+  meshcheck:
+    build: .
+    volumes:
+      # 只读挂载数据目录，便于审计宿主机上的 .mesh 文件
+      - ./data:/app/data:ro
+
+  meshcheck-test:
+    build:
+      context: .
+      target: build
+    profiles: ["test"]
+    entrypoint: ["cargo", "test", "--release"]
